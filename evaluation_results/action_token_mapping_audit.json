@@ -1,0 +1,133 @@
+{
+  "config": "config/training/qwen2.5-vl-3B-mix-sft.yaml",
+  "checkpoint": "runs/sft/2026-04-22_08-18-13/epoch=4-loss=1.7191.ckpt",
+  "pretrained_model_path": "./Qwen2.5-VL-3B-Instruct",
+  "before_vocab_len": 151665,
+  "after_vocab_len": 153713,
+  "action_start_id": 151665,
+  "n_bins": 2048,
+  "expected_after_vocab_min": 153713,
+  "all_checked_ok": true,
+  "rows": [
+    {
+      "token": "<action_0>",
+      "expected_id": 151665,
+      "convert_tokens_to_ids": 151665,
+      "encoded_ids": [
+        151665
+      ],
+      "encoded_len": 1,
+      "decoded": "<action_0>",
+      "single_token": true,
+      "id_matches_expected": true,
+      "roundtrip_matches": true
+    },
+    {
+      "token": "<action_1>",
+      "expected_id": 151666,
+      "convert_tokens_to_ids": 151666,
+      "encoded_ids": [
+        151666
+      ],
+      "encoded_len": 1,
+      "decoded": "<action_1>",
+      "single_token": true,
+      "id_matches_expected": true,
+      "roundtrip_matches": true
+    },
+    {
+      "token": "<action_2>",
+      "expected_id": 151667,
+      "convert_tokens_to_ids": 151667,
+      "encoded_ids": [
+        151667
+      ],
+      "encoded_len": 1,
+      "decoded": "<action_2>",
+      "single_token": true,
+      "id_matches_expected": true,
+      "roundtrip_matches": true
+    },
+    {
+      "token": "<action_10>",
+      "expected_id": 151675,
+      "convert_tokens_to_ids": 151675,
+      "encoded_ids": [
+        151675
+      ],
+      "encoded_len": 1,
+      "decoded": "<action_10>",
+      "single_token": true,
+      "id_matches_expected": true,
+      "roundtrip_matches": true
+    },
+    {
+      "token": "<action_100>",
+      "expected_id": 151765,
+      "convert_tokens_to_ids": 151765,
+      "encoded_ids": [
+        151765
+      ],
+      "encoded_len": 1,
+      "decoded": "<action_100>",
+      "single_token": true,
+      "id_matches_expected": true,
+      "roundtrip_matches": true
+    },
+    {
+      "token": "<action_511>",
+      "expected_id": 152176,
+      "convert_tokens_to_ids": 152176,
+      "encoded_ids": [
+        152176
+      ],
+      "encoded_len": 1,
+      "decoded": "<action_511>",
+      "single_token": true,
+      "id_matches_expected": true,
+      "roundtrip_matches": true
+    },
+    {
+      "token": "<action_1024>",
+      "expected_id": 152689,
+      "convert_tokens_to_ids": 152689,
+      "encoded_ids": [
+        152689
+      ],
+      "encoded_len": 1,
+      "decoded": "<action_1024>",
+      "single_token": true,
+      "id_matches_expected": true,
+      "roundtrip_matches": true
+    },
+    {
+      "token": "<action_2047>",
+      "expected_id": 153712,
+      "convert_tokens_to_ids": 153712,
+      "encoded_ids": [
+        153712
+      ],
+      "encoded_len": 1,
+      "decoded": "<action_2047>",
+      "single_token": true,
+      "id_matches_expected": true,
+      "roundtrip_matches": true
+    }
+  ],
+  "model_info": {
+    "original_embed_shape": [
+      151936,
+      2048
+    ],
+    "resized_embed_shape": [
+      153713,
+      2048
+    ],
+    "lm_head_shape": [
+      153713,
+      2048
+    ],
+    "tokenizer_len_matches_embedding": true,
+    "tokenizer_len_matches_lm_head": true
+  }
+}

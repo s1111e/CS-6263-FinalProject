@@ -1,0 +1,1073 @@
+{
+  "dataset_context": {
+    "train_samples": 19030,
+    "val_samples": 5569,
+    "total_samples": 24599,
+    "scope": "nuScenes-only"
+  },
+  "table_1": {
+    "table_id": "Table 1",
+    "title": "NAVSIM planning benchmark",
+    "status": "not_reproduced_in_nuscenes_only_scope",
+    "reason": "Table 1 is a nuPlan/NAVSIM benchmark. This repository currently focuses on nuScenes-only reproduction.",
+    "rows": []
+  },
+  "table_2": {
+    "table_id": "Table 2",
+    "title": "Runtime analysis: fast vs slow thinking",
+    "status": "artifact_found",
+    "paper": {
+      "fast_min_s": 0.997,
+      "fast_max_s": 1.116,
+      "fast_avg_s": 1.072,
+      "slow_min_s": 7.607,
+      "slow_max_s": 13.706,
+      "slow_avg_s": 10.518,
+      "slow_fast_ratio": 9.8
+    },
+    "local": {
+      "num_samples": 100,
+      "config": "config/training/qwen2.5-vl-3B-mix-sft.yaml",
+      "checkpoint": "runs/sft/2026-04-22_08-18-13/epoch=4-loss=1.7191.ckpt",
+      "device": "cuda:0",
+      "runtime_units": "seconds",
+      "summary": {
+        "fast_thinking": {
+          "min": 0.9255267707630992,
+          "max": 9.539039868861437,
+          "mean": 4.617528447164222,
+          "std": 2.6495102829129027,
+          "median": 6.804115570615977,
+          "samples": 100
+        },
+        "slow_thinking": {
+          "min": 1.4273075321689248,
+          "max": 3.4265684923157096,
+          "mean": 2.928940185252577,
+          "std": 0.763500686333012,
+          "median": 3.371094217058271,
+          "samples": 100
+        },
+        "ratio": {
+          "min": 0.2297667440329421,
+          "max": 3.6304422563584433,
+          "mean": 1.0073835329031904,
+          "std": 0.8222292004655267,
+          "median": 0.49557198277875036
+        }
+      },
+      "per_sample": [
+        {
+          "token": "e4cd9dabbbd9468796c2ef8d0bc0a568",
+          "fast_thinking_time": 9.539039868861437,
+          "slow_thinking_time": 3.4165056832134724,
+          "ratio": 0.35816033166671946,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "16af972018e646429d22e4d537bef372",
+          "fast_thinking_time": 1.552234555594623,
+          "slow_thinking_time": 1.5847908835858107,
+          "ratio": 1.0209738456561521,
+          "fast_tokens": 7,
+          "slow_tokens": 7
+        },
+        {
+          "token": "8e352d4a6c6f40c8ad4f10a3d2c3f158",
+          "fast_thinking_time": 3.3748302217572927,
+          "slow_thinking_time": 2.9445227580145,
+          "ratio": 0.8724950781320403,
+          "fast_tokens": 26,
+          "slow_tokens": 22
+        },
+        {
+          "token": "c76efd09fff94c32b9a77b0c634856af",
+          "fast_thinking_time": 6.9045514315366745,
+          "slow_thinking_time": 3.420240506529808,
+          "ratio": 0.49536027654277326,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "fd737eecc5cd4e82bf31f0e0656d7f86",
+          "fast_thinking_time": 6.900192185305059,
+          "slow_thinking_time": 3.4104803474619985,
+          "ratio": 0.4942587475643217,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "02fa71fc16d449c382c24b1b7deef3ba",
+          "fast_thinking_time": 6.901563270948827,
+          "slow_thinking_time": 3.409061045385897,
+          "ratio": 0.4939549072506321,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "d92188150ae74dcbbe5c72f94ecb4a64",
+          "fast_thinking_time": 6.916196412406862,
+          "slow_thinking_time": 3.4265684923157096,
+          "ratio": 0.4954411772009308,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "4ebb2db9e3a048aeaad17d954b7a3d37",
+          "fast_thinking_time": 6.90139274019748,
+          "slow_thinking_time": 3.416421010158956,
+          "ratio": 0.495033558988732,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "2ebfc5ae282a472aa090b4e839b7bd4b",
+          "fast_thinking_time": 6.910935567691922,
+          "slow_thinking_time": 3.4180747298523784,
+          "ratio": 0.49458929205354013,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "f4e02ed64b444a2a98fa0eb784ebe20d",
+          "fast_thinking_time": 3.0095644732937217,
+          "slow_thinking_time": 2.9485627757385373,
+          "ratio": 0.9797307224694798,
+          "fast_tokens": 27,
+          "slow_tokens": 22
+        },
+        {
+          "token": "780457151a8a4d3a83b09dd1c7e9403b",
+          "fast_thinking_time": 1.604643864557147,
+          "slow_thinking_time": 1.5887978849932551,
+          "ratio": 0.9901249243437171,
+          "fast_tokens": 7,
+          "slow_tokens": 7
+        },
+        {
+          "token": "2dbfc784e7b8463db1a273cd9b27b240",
+          "fast_thinking_time": 1.7872440163046122,
+          "slow_thinking_time": 1.6328228618949652,
+          "ratio": 0.9135981695835047,
+          "fast_tokens": 7,
+          "slow_tokens": 15
+        },
+        {
+          "token": "a0cd4d000319445db58278a4a54da6ae",
+          "fast_thinking_time": 1.4067809144034982,
+          "slow_thinking_time": 3.4092938005924225,
+          "ratio": 2.4234717472251375,
+          "fast_tokens": 5,
+          "slow_tokens": 14
+        },
+        {
+          "token": "71be7481176747a7aff4ef5143b18e2a",
+          "fast_thinking_time": 6.889363241381943,
+          "slow_thinking_time": 3.4067547684535384,
+          "ratio": 0.49449486826160943,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "35c031b027b54e5f8f7d4ef13c0150be",
+          "fast_thinking_time": 6.8955116691067815,
+          "slow_thinking_time": 3.4143430115655065,
+          "ratio": 0.4951544099131062,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "aab42793af6b4563a8ef228423189163",
+          "fast_thinking_time": 1.7903984505683184,
+          "slow_thinking_time": 1.636569001711905,
+          "ratio": 0.9140808858455033,
+          "fast_tokens": 7,
+          "slow_tokens": 7
+        },
+        {
+          "token": "0141260a339d4b37addb55818bbae718",
+          "fast_thinking_time": 6.874598112888634,
+          "slow_thinking_time": 3.397362512536347,
+          "ratio": 0.49419070856911673,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "15fa345fae4c4cc1b387b0b27cfed9c2",
+          "fast_thinking_time": 1.5572114689275622,
+          "slow_thinking_time": 3.4082630844786763,
+          "ratio": 2.188696366862695,
+          "fast_tokens": 7,
+          "slow_tokens": 14
+        },
+        {
+          "token": "6d9def1e245e4dde83ccbb7a97e4744c",
+          "fast_thinking_time": 3.2750209160149097,
+          "slow_thinking_time": 3.399977927096188,
+          "ratio": 1.0381545688670983,
+          "fast_tokens": 26,
+          "slow_tokens": 14
+        },
+        {
+          "token": "ce94ef7a0522468e81c0e2b3a2f1e12d",
+          "fast_thinking_time": 6.8886386984959245,
+          "slow_thinking_time": 1.5827800845727324,
+          "ratio": 0.2297667440329421,
+          "fast_tokens": 31,
+          "slow_tokens": 7
+        },
+        {
+          "token": "e47ae59682f540af83fc19cf625899c0",
+          "fast_thinking_time": 6.864048443734646,
+          "slow_thinking_time": 3.3947953656315804,
+          "ratio": 0.49457625386229254,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "1263172dcdf2494c9d4b252875233079",
+          "fast_thinking_time": 1.4040589267387986,
+          "slow_thinking_time": 1.5771062215790153,
+          "ratio": 1.1232478862138306,
+          "fast_tokens": 5,
+          "slow_tokens": 7
+        },
+        {
+          "token": "fc6968b9cc604f30b6073e5368787e04",
+          "fast_thinking_time": 6.864023203030229,
+          "slow_thinking_time": 3.398747093975544,
+          "ratio": 0.4951537885937091,
+          "fast_tokens": 41,
+          "slow_tokens": 8
+        },
+        {
+          "token": "603c9225a5624229bae41a819d10c9cd",
+          "fast_thinking_time": 6.869353738613427,
+          "slow_thinking_time": 3.4040438374504447,
+          "ratio": 0.49554062390409787,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "4404961302234ce8ad5fddbd17fbcc04",
+          "fast_thinking_time": 1.5491173453629017,
+          "slow_thinking_time": 1.5792839266359806,
+          "ratio": 1.0194733997158956,
+          "fast_tokens": 7,
+          "slow_tokens": 7
+        },
+        {
+          "token": "cd422c2fc0914342a337dda50351f686",
+          "fast_thinking_time": 1.7981764758005738,
+          "slow_thinking_time": 3.4117775978520513,
+          "ratio": 1.8973541494769468,
+          "fast_tokens": 7,
+          "slow_tokens": 14
+        },
+        {
+          "token": "c6558fcf7c034d939c3aa0b6a6feb048",
+          "fast_thinking_time": 6.873562159948051,
+          "slow_thinking_time": 3.3960491372272372,
+          "ratio": 0.49407411444037974,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "7c07e754d1e243ce82fcc01ef1ee292f",
+          "fast_thinking_time": 1.7824688935652375,
+          "slow_thinking_time": 3.3997993133962154,
+          "ratio": 1.9073540781943437,
+          "fast_tokens": 7,
+          "slow_tokens": 14
+        },
+        {
+          "token": "eb0fe3d48c3a430a92fb9a7dae1b2409",
+          "fast_thinking_time": 1.5436950325965881,
+          "slow_thinking_time": 1.5877122534438968,
+          "ratio": 1.02851419478449,
+          "fast_tokens": 7,
+          "slow_tokens": 7
+        },
+        {
+          "token": "f5e6b52a7d734e6cb9a8a31cc4da0342",
+          "fast_thinking_time": 6.8303377060219646,
+          "slow_thinking_time": 2.925790958106518,
+          "ratio": 0.4283523134627729,
+          "fast_tokens": 31,
+          "slow_tokens": 22
+        },
+        {
+          "token": "f79b3feb774f4fdaaeb25f38d456f73e",
+          "fast_thinking_time": 6.828831649385393,
+          "slow_thinking_time": 3.378391142003238,
+          "ratio": 0.4947246198853503,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "7693424bd4b04229b08c578b256a7de4",
+          "fast_thinking_time": 6.827685358002782,
+          "slow_thinking_time": 3.3817840376868844,
+          "ratio": 0.49530461062079695,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "aadad53902494b81bf5b1c332f423760",
+          "fast_thinking_time": 6.830438773147762,
+          "slow_thinking_time": 3.3763635344803333,
+          "ratio": 0.4943113680710674,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "263f230e546b4d9ea35dc69ab9efc0a0",
+          "fast_thinking_time": 6.832597001455724,
+          "slow_thinking_time": 3.3884716676548123,
+          "ratio": 0.49592734167299474,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "bca4a3f7ae0748c3b7b2f6e537c1518c",
+          "fast_thinking_time": 1.5431955941021442,
+          "slow_thinking_time": 3.377721978351474,
+          "ratio": 2.1887840992163317,
+          "fast_tokens": 7,
+          "slow_tokens": 14
+        },
+        {
+          "token": "971fe52375054e499551b963e85e1fcf",
+          "fast_thinking_time": 0.9377876250073314,
+          "slow_thinking_time": 3.3814004389569163,
+          "ratio": 3.605720899687156,
+          "fast_tokens": 3,
+          "slow_tokens": 14
+        },
+        {
+          "token": "0490bd92372a4a2d98c7136ba6ebcfce",
+          "fast_thinking_time": 6.8350913021713495,
+          "slow_thinking_time": 3.3253227416425943,
+          "ratio": 0.4865074356192165,
+          "fast_tokens": 31,
+          "slow_tokens": 45
+        },
+        {
+          "token": "f656f3b78a2c4ee4824f58ca89fe545d",
+          "fast_thinking_time": 6.8248226484283805,
+          "slow_thinking_time": 1.568859820254147,
+          "ratio": 0.2298755441821516,
+          "fast_tokens": 31,
+          "slow_tokens": 7
+        },
+        {
+          "token": "39dabe21fb704cbfbef605dc5730275a",
+          "fast_thinking_time": 6.810669193044305,
+          "slow_thinking_time": 3.363818651996553,
+          "ratio": 0.49390427822158806,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "18b21060f2684bda9bf2105be9516e7e",
+          "fast_thinking_time": 6.827541694045067,
+          "slow_thinking_time": 3.3807274494320154,
+          "ratio": 0.4951602789010665,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "98f5dd32944b4ad087e9fb9844e490e6",
+          "fast_thinking_time": 6.817182630300522,
+          "slow_thinking_time": 3.36712265573442,
+          "ratio": 0.49391703850920404,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "fa0f79d60d594c8ea52b7f258af94fe4",
+          "fast_thinking_time": 6.8264637207612395,
+          "slow_thinking_time": 1.5716312248259783,
+          "ratio": 0.23022626195847137,
+          "fast_tokens": 31,
+          "slow_tokens": 7
+        },
+        {
+          "token": "7690202fa7c84a14bbb1efeb52bd961b",
+          "fast_thinking_time": 1.395759206265211,
+          "slow_thinking_time": 1.5661101527512074,
+          "ratio": 1.1220489506508957,
+          "fast_tokens": 5,
+          "slow_tokens": 7
+        },
+        {
+          "token": "4c8a92a8f97844a7977b03a414fcd8a2",
+          "fast_thinking_time": 6.809743633493781,
+          "slow_thinking_time": 3.3689957335591316,
+          "ratio": 0.49473165435901256,
+          "fast_tokens": 31,
+          "slow_tokens": 8
+        },
+        {
+          "token": "66317c99b4524905bfb5cd70dac8932a",
+          "fast_thinking_time": 1.398400442674756,
+          "slow_thinking_time": 1.5717834355309606,
+          "ratio": 1.123986654727147,
+          "fast_tokens": 5,
+          "slow_tokens": 7
+        },
+        {
+          "token": "bda4f0fb063b43648614009183ddb205",
+          "fast_thinking_time": 6.817929971031845,
+          "slow_thinking_time": 3.372780365869403,
+          "ratio": 0.49469272641399054,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "6e2c3941fc4e496da62ce4e3e94d96fb",
+          "fast_thinking_time": 6.829851105809212,
+          "slow_thinking_time": 3.382499737665057,
+          "ratio": 0.49525233936476765,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "b615d1afcff44bbab1a3e34f76a64942",
+          "fast_thinking_time": 6.824626042507589,
+          "slow_thinking_time": 3.3851693710312247,
+          "ratio": 0.4960226904663341,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "7955a19c9fc348ee9efc6651fce327a6",
+          "fast_thinking_time": 2.9135440923273563,
+          "slow_thinking_time": 2.9094313234090805,
+          "ratio": 0.9985883965411382,
+          "fast_tokens": 27,
+          "slow_tokens": 22
+        },
+        {
+          "token": "34212679eebc468588142146837da4fe",
+          "fast_thinking_time": 6.806263763457537,
+          "slow_thinking_time": 3.3711343007162213,
+          "ratio": 0.4952988038482522,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "864789081c4443de8c42faf4301f9be5",
+          "fast_thinking_time": 1.4000828359276056,
+          "slow_thinking_time": 1.5659150257706642,
+          "ratio": 1.118444555984567,
+          "fast_tokens": 5,
+          "slow_tokens": 7
+        },
+        {
+          "token": "91bb8353dea24e0eb219c013b45dcd64",
+          "fast_thinking_time": 6.81031639687717,
+          "slow_thinking_time": 3.3729032799601555,
+          "ratio": 0.49526381498321875,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "00bf6d20450748048caf2959e330069b",
+          "fast_thinking_time": 0.9347556410357356,
+          "slow_thinking_time": 1.432095991447568,
+          "ratio": 1.5320538636822403,
+          "fast_tokens": 3,
+          "slow_tokens": 5
+        },
+        {
+          "token": "34ce6cba0fa543398b4f0f677ace4e17",
+          "fast_thinking_time": 1.2605677638202906,
+          "slow_thinking_time": 1.614222933538258,
+          "ratio": 1.2805522875233428,
+          "fast_tokens": 5,
+          "slow_tokens": 7
+        },
+        {
+          "token": "d4437f7299da465a9115120375104a24",
+          "fast_thinking_time": 6.807698196731508,
+          "slow_thinking_time": 3.369856236502528,
+          "ratio": 0.4950067025768642,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "3c693de822714eeaae9695ae7ddb013c",
+          "fast_thinking_time": 6.807460929267108,
+          "slow_thinking_time": 3.3728676522150636,
+          "ratio": 0.49546632544216257,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "51d5918ad83c4a66a08e93123a9fc51a",
+          "fast_thinking_time": 6.808169198222458,
+          "slow_thinking_time": 3.3739539962261915,
+          "ratio": 0.49557434575907655,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "858a1ece22cf45d9bc71e42336604b78",
+          "fast_thinking_time": 6.805264009162784,
+          "slow_thinking_time": 3.097855764441192,
+          "ratio": 0.455214633887849,
+          "fast_tokens": 31,
+          "slow_tokens": 26
+        },
+        {
+          "token": "4d214e9ba19f48ec8a6e636ca8c6b1c4",
+          "fast_thinking_time": 6.79939775262028,
+          "slow_thinking_time": 3.364881365559995,
+          "ratio": 0.4948793243141678,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "354d984830374fdcb1d1791073e19476",
+          "fast_thinking_time": 6.809456612914801,
+          "slow_thinking_time": 3.369397292844951,
+          "ratio": 0.49481147826899424,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "018ef7dd170d41788a969e5b7213a058",
+          "fast_thinking_time": 6.804321126081049,
+          "slow_thinking_time": 3.365942464210093,
+          "ratio": 0.4946771914259591,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "1a9894a106fe444c9f35126426563d43",
+          "fast_thinking_time": 1.5387702230364084,
+          "slow_thinking_time": 1.5711583765223622,
+          "ratio": 1.0210480765750998,
+          "fast_tokens": 7,
+          "slow_tokens": 7
+        },
+        {
+          "token": "90bf8cc6d6c340859bbb99056a0e7e8e",
+          "fast_thinking_time": 6.803910015150905,
+          "slow_thinking_time": 3.368883597664535,
+          "ratio": 0.4951393522493281,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "f722e39f910049d7955a64df0b4c424a",
+          "fast_thinking_time": 6.816055504605174,
+          "slow_thinking_time": 3.3770977444946766,
+          "ratio": 0.4954621836945117,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "87091b64b814472f8d4dbac04de8d3fc",
+          "fast_thinking_time": 6.805085499770939,
+          "slow_thinking_time": 3.371666233986616,
+          "ratio": 0.49546272917513046,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "7c4bfd7aa61f4fb4a0e87d82a0b9609e",
+          "fast_thinking_time": 6.805450080893934,
+          "slow_thinking_time": 3.371054133400321,
+          "ratio": 0.49534624357387314,
+          "fast_tokens": 31,
+          "slow_tokens": 9
+        },
+        {
+          "token": "958256d926c24c36b2e4b70cfad8b15b",
+          "fast_thinking_time": 1.3975127143785357,
+          "slow_thinking_time": 3.3696481892839074,
+          "ratio": 2.411175336449348,
+          "fast_tokens": 5,
+          "slow_tokens": 14
+        },
+        {
+          "token": "20a68f4f6d5e46edb6c4d9e8321ced5b",
+          "fast_thinking_time": 1.4019082598388195,
+          "slow_thinking_time": 3.374743090942502,
+          "ratio": 2.407249595155751,
+          "fast_tokens": 5,
+          "slow_tokens": 13
+        },
+        {
+          "token": "5b790dd0fb6e4545bc7f3273aa178d4c",
+          "fast_thinking_time": 3.148972412571311,
+          "slow_thinking_time": 1.8961609788239002,
+          "ratio": 0.6021522993513873,
+          "fast_tokens": 27,
+          "slow_tokens": 14
+        },
+        {
+          "token": "60832ea2bb78449690e751f5ab3de000",
+          "fast_thinking_time": 1.3965205112472177,
+          "slow_thinking_time": 3.368953022174537,
+          "ratio": 2.4123906487887967,
+          "fast_tokens": 5,
+          "slow_tokens": 14
+        },
+        {
+          "token": "f4d621bac4954bab8376359358093db6",
+          "fast_thinking_time": 1.7640114994719625,
+          "slow_thinking_time": 3.3718969458714128,
+          "ratio": 1.9114937441625257,
+          "fast_tokens": 7,
+          "slow_tokens": 14
+        },
+        {
+          "token": "1a4601bb2b674b819094ebb5ca797c61",
+          "fast_thinking_time": 6.808645334094763,
+          "slow_thinking_time": 3.3745710887014866,
+          "ratio": 0.4956303233777046,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "28e33ad25c0943b49b57f8f1346d5bd2",
+          "fast_thinking_time": 0.9430227698758245,
+          "slow_thinking_time": 3.383750643581152,
+          "ratio": 3.5881961196193792,
+          "fast_tokens": 3,
+          "slow_tokens": 14
+        },
+        {
+          "token": "fc03376a8e4f4ee4830756bb3e212bd8",
+          "fast_thinking_time": 1.7693775473162532,
+          "slow_thinking_time": 3.366373924538493,
+          "ratio": 1.9025752472356865,
+          "fast_tokens": 7,
+          "slow_tokens": 14
+        },
+        {
+          "token": "ad830c774eb7484a87fd2c776c570c2f",
+          "fast_thinking_time": 6.810563984327018,
+          "slow_thinking_time": 3.3724722107872367,
+          "ratio": 0.4951825162421531,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "e3f8a3be1acd4c969bfb5dbe917132f4",
+          "fast_thinking_time": 1.396672003902495,
+          "slow_thinking_time": 1.4273075321689248,
+          "ratio": 1.0219346619541525,
+          "fast_tokens": 5,
+          "slow_tokens": 5
+        },
+        {
+          "token": "70b93dd31d724e7fbab2d20ade9bb4c1",
+          "fast_thinking_time": 1.3978122640401125,
+          "slow_thinking_time": 3.3651620699092746,
+          "ratio": 2.4074492379848698,
+          "fast_tokens": 5,
+          "slow_tokens": 14
+        },
+        {
+          "token": "149a79457f3c4f76afb5f01ffcda5470",
+          "fast_thinking_time": 6.802993239834905,
+          "slow_thinking_time": 3.3726812954992056,
+          "ratio": 0.49576431676434446,
+          "fast_tokens": 26,
+          "slow_tokens": 14
+        },
+        {
+          "token": "3123675752d143e59faf6f9e6b7118b0",
+          "fast_thinking_time": 1.5372660560533404,
+          "slow_thinking_time": 3.374931873753667,
+          "ratio": 2.195411692376926,
+          "fast_tokens": 7,
+          "slow_tokens": 14
+        },
+        {
+          "token": "023d6155e22f4c08b4ce15471bc79e7f",
+          "fast_thinking_time": 1.5378804383799434,
+          "slow_thinking_time": 1.565988451242447,
+          "ratio": 1.0182771119009184,
+          "fast_tokens": 7,
+          "slow_tokens": 7
+        },
+        {
+          "token": "93e406fbff494e06b31110c723ea6210",
+          "fast_thinking_time": 6.818604340776801,
+          "slow_thinking_time": 3.380757750943303,
+          "ratio": 0.49581374457022015,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "95ed5d5037b64b73b3e4028d4ce99082",
+          "fast_thinking_time": 0.9384518107399344,
+          "slow_thinking_time": 1.5648911679163575,
+          "ratio": 1.6675242671038153,
+          "fast_tokens": 3,
+          "slow_tokens": 7
+        },
+        {
+          "token": "b2fecdf10a404d94a049c91f20eaddf3",
+          "fast_thinking_time": 6.802405803464353,
+          "slow_thinking_time": 1.5721599254757166,
+          "ratio": 0.2311182206558511,
+          "fast_tokens": 31,
+          "slow_tokens": 7
+        },
+        {
+          "token": "9bae21d742234e0da89097147f74a5f8",
+          "fast_thinking_time": 6.802102037705481,
+          "slow_thinking_time": 3.3670625183731318,
+          "ratio": 0.4950032357216632,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "7f4c0c97221549db87322909462d24a5",
+          "fast_thinking_time": 6.796831036917865,
+          "slow_thinking_time": 3.363507998175919,
+          "ratio": 0.4948641477045098,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "1055581a282140f69b2fcb6906629785",
+          "fast_thinking_time": 1.3942880490794778,
+          "slow_thinking_time": 1.572607976384461,
+          "ratio": 1.12789317632229,
+          "fast_tokens": 5,
+          "slow_tokens": 7
+        },
+        {
+          "token": "66c07bf0f65f49ab808a619f14d4a3fc",
+          "fast_thinking_time": 6.805168138816953,
+          "slow_thinking_time": 3.3724345872178674,
+          "ratio": 0.49556961979842423,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "c63b338cc38a425da3bd956cf5c4b776",
+          "fast_thinking_time": 6.8141570603474975,
+          "slow_thinking_time": 3.380250566639006,
+          "ratio": 0.49606290795807184,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "45ff19c347b44d168717a7ef95b04d93",
+          "fast_thinking_time": 1.7779603460803628,
+          "slow_thinking_time": 3.3799584582448006,
+          "ratio": 1.901031406969314,
+          "fast_tokens": 7,
+          "slow_tokens": 14
+        },
+        {
+          "token": "1752d62f5e05479e93ed6e865a0ab69d",
+          "fast_thinking_time": 1.0275563560426235,
+          "slow_thinking_time": 3.3635103199630976,
+          "ratio": 3.2733098288806435,
+          "fast_tokens": 3,
+          "slow_tokens": 14
+        },
+        {
+          "token": "41e55a08b2dd4bb0836017b43cd181b3",
+          "fast_thinking_time": 1.5317110670730472,
+          "slow_thinking_time": 1.5703037390485406,
+          "ratio": 1.0251957910373006,
+          "fast_tokens": 7,
+          "slow_tokens": 7
+        },
+        {
+          "token": "cfebd9654ff240859bcd5ee715ef4648",
+          "fast_thinking_time": 1.0738516170531511,
+          "slow_thinking_time": 3.371783271431923,
+          "ratio": 3.1398968143147417,
+          "fast_tokens": 4,
+          "slow_tokens": 14
+        },
+        {
+          "token": "ecb9d6d3ce7944bc9d6a599aa9d25abc",
+          "fast_thinking_time": 6.801113376393914,
+          "slow_thinking_time": 3.3648328240960836,
+          "ratio": 0.494747350599261,
+          "fast_tokens": 31,
+          "slow_tokens": 48
+        },
+        {
+          "token": "4bc57fd309b8495fa222abc3263b47e5",
+          "fast_thinking_time": 0.9316252013668418,
+          "slow_thinking_time": 1.5696715358644724,
+          "ratio": 1.6848744898286516,
+          "fast_tokens": 3,
+          "slow_tokens": 7
+        },
+        {
+          "token": "5e02eaf4ff1343fe81ba6a0206a4556e",
+          "fast_thinking_time": 0.9255267707630992,
+          "slow_thinking_time": 3.3600714979693294,
+          "ratio": 3.6304422563584433,
+          "fast_tokens": 3,
+          "slow_tokens": 14
+        },
+        {
+          "token": "dcfd47c0dab94cf79e49221da90564b9",
+          "fast_thinking_time": 1.5372608127072453,
+          "slow_thinking_time": 3.375768535770476,
+          "ratio": 2.1959634356550493,
+          "fast_tokens": 7,
+          "slow_tokens": 14
+        },
+        {
+          "token": "9f7efc90664f4c3f84ce0014bbeb3fde",
+          "fast_thinking_time": 6.808252802118659,
+          "slow_thinking_time": 3.3686149418354034,
+          "ratio": 0.49478405690034377,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "777cfbf6a7f0490bad4759a1ef714215",
+          "fast_thinking_time": 6.8083222564309835,
+          "slow_thinking_time": 3.3662841813638806,
+          "ratio": 0.49443666950167736,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "ae81961b714544968078764ec81112f9",
+          "fast_thinking_time": 6.8130646320059896,
+          "slow_thinking_time": 3.3760906457901,
+          "ratio": 0.4955318682770324,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        },
+        {
+          "token": "65877dfa033d428b9b89877b269a19fa",
+          "fast_thinking_time": 6.817490926012397,
+          "slow_thinking_time": 3.3722440376877785,
+          "ratio": 0.49464591508598166,
+          "fast_tokens": 31,
+          "slow_tokens": 14
+        }
+      ],
+      "failures": []
+    },
+    "artifact": "evaluation_results/table_2_runtime.json",
+    "how_to_generate": "sbatch slurm_scripts/14_reproduce_table_2.slurm"
+  },
+  "table_3": {
+    "table_id": "Table 3",
+    "title": "Bench2Drive / CARLA closed-loop benchmark",
+    "status": "not_reproduced_in_nuscenes_only_scope",
+    "reason": "Table 3 requires CARLA/Bench2Drive closed-loop evaluation, outside the nuScenes-only project scope.",
+    "rows": []
+  },
+  "table_4": {
+    "table_id": "Table 4",
+    "title": "Action tokenization accuracy",
+    "status": "partial_kdisk_only",
+    "paper": {
+      "256": {
+        "rt1_ade": 0.144,
+        "rt1_fde": 0.2942,
+        "fast_ade": 0.1708,
+        "fast_fde": 0.2137,
+        "kdisk_ade": 0.0687,
+        "kdisk_fde": 0.1034,
+        "mc": 86.47,
+        "cu": 100.0
+      },
+      "1024": {
+        "rt1_ade": 0.1052,
+        "rt1_fde": 0.1883,
+        "fast_ade": 0.0522,
+        "fast_fde": 0.0588,
+        "kdisk_ade": 0.0253,
+        "kdisk_fde": 0.0282,
+        "mc": 97.41,
+        "cu": 100.0
+      },
+      "2048": {
+        "rt1_ade": 0.1014,
+        "rt1_fde": 0.1775,
+        "fast_ade": 0.0281,
+        "fast_fde": 0.0309,
+        "kdisk_ade": 0.0182,
+        "kdisk_fde": 0.0203,
+        "mc": 99.42,
+        "cu": 100.0
+      },
+      "4096": {
+        "rt1_ade": 0.1001,
+        "rt1_fde": 0.1739,
+        "fast_ade": 0.0149,
+        "fast_fde": 0.0161,
+        "kdisk_ade": 0.0141,
+        "kdisk_fde": 0.0155,
+        "mc": 100.0,
+        "cu": 91.46
+      }
+    },
+    "local_kdisk": {
+      "256": {
+        "ADE": 0.0687,
+        "FDE": 0.1034,
+        "MC": 86.47,
+        "CU": 100.0,
+        "codebook_shape": [
+          256,
+          6,
+          4,
+          2
+        ]
+      },
+      "2048": {
+        "ADE": 0.0182,
+        "FDE": 0.0203,
+        "MC": 99.42,
+        "CU": 100.0,
+        "codebook_shape": [
+          2048,
+          6,
+          4,
+          2
+        ]
+      },
+      "4096": {
+        "ADE": 0.016380000000000002,
+        "FDE": 0.017255,
+        "MC": 100.0,
+        "CU": 91.46,
+        "codebook_shape": [
+          4095,
+          6,
+          4,
+          2
+        ]
+      }
+    },
+    "note": "Local artifacts currently cover K-disk metrics only for available K values; RT-1/FAST baselines are not reproduced yet."
+  },
+  "table_5": {
+    "table_id": "Table 5",
+    "title": "Influence of physical action tokenization",
+    "status": "not_reproduced_in_nuscenes_only_scope",
+    "reason": "Requires training/evaluating text-waypoint and physical-action variants. Not available yet in the nuScenes-only artifacts.",
+    "rows": []
+  },
+  "table_6": {
+    "table_id": "Table 6",
+    "title": "Tokenization methods on NAVSIM",
+    "status": "not_reproduced_in_nuscenes_only_scope",
+    "reason": "Requires NAVSIM/nuPlan evaluation for FAST and K-disk. This is outside the current nuScenes-only scope.",
+    "rows": []
+  },
+  "table_s2": {
+    "table_id": "Table S2",
+    "title": "nuScenes planning benchmark",
+    "status": "local_observed_gap",
+    "paper": {
+      "action_only": {
+        "stp3_l2_1s": 0.22,
+        "stp3_l2_2s": 0.39,
+        "stp3_l2_3s": 0.61,
+        "stp3_avg_l2": 0.41,
+        "stp3_coll_1s": 0.1,
+        "stp3_coll_2s": 0.17,
+        "stp3_coll_3s": 0.28,
+        "stp3_avg_coll": 0.18,
+        "uniad_l2_1s": 0.29,
+        "uniad_l2_2s": 0.67,
+        "uniad_l2_3s": 1.17,
+        "uniad_avg_l2": 0.71,
+        "uniad_coll_1s": 0.15,
+        "uniad_coll_2s": 0.34,
+        "uniad_coll_3s": 0.56,
+        "uniad_avg_coll": 0.35
+      },
+      "with_cot": {
+        "stp3_l2_1s": 0.21,
+        "stp3_l2_2s": 0.38,
+        "stp3_l2_3s": 0.6,
+        "stp3_avg_l2": 0.4,
+        "stp3_coll_1s": 0.13,
+        "stp3_coll_2s": 0.18,
+        "stp3_coll_3s": 0.28,
+        "stp3_avg_coll": 0.2,
+        "uniad_l2_1s": 0.28,
+        "uniad_l2_2s": 0.66,
+        "uniad_l2_3s": 1.16,
+        "uniad_avg_l2": 0.7,
+        "uniad_coll_1s": 0.14,
+        "uniad_coll_2s": 0.25,
+        "uniad_coll_3s": 0.53,
+        "uniad_avg_coll": 0.31
+      }
+    },
+    "local": {
+      "stp3": {
+        "obj_col": {
+          "0.5s": 0.0253,
+          "1.0s": 0.0292,
+          "1.5s": 0.0308,
+          "2.0s": 0.0322,
+          "2.5s": 0.0327,
+          "3.0s": 0.0322
+        },
+        "obj_box_col": {
+          "0.5s": 0.0479,
+          "1.0s": 0.0597,
+          "1.5s": 0.0651,
+          "2.0s": 0.0702,
+          "2.5s": 0.0731,
+          "3.0s": 0.0742
+        },
+        "L2": {
+          "0.5s": 4.6454,
+          "1.0s": 5.4641,
+          "1.5s": 5.8913,
+          "2.0s": 6.5388,
+          "2.5s": 7.3184,
+          "3.0s": 7.9288
+        }
+      },
+      "uniad": {
+        "obj_col": {
+          "0.5s": 0.0253,
+          "1.0s": 0.033,
+          "1.5s": 0.0339,
+          "2.0s": 0.0366,
+          "2.5s": 0.0347,
+          "3.0s": 0.0298
+        },
+        "obj_box_col": {
+          "0.5s": 0.0479,
+          "1.0s": 0.0715,
+          "1.5s": 0.076,
+          "2.0s": 0.0853,
+          "2.5s": 0.0849,
+          "3.0s": 0.0797
+        },
+        "L2": {
+          "0.5s": 4.6454,
+          "1.0s": 6.2829,
+          "1.5s": 6.7457,
+          "2.0s": 8.4814,
+          "2.5s": 10.4369,
+          "3.0s": 10.9805
+        }
+      }
+    },
+    "artifact": "logs/12_evaluate.out",
+    "note": "Local values are parsed from the available planning metric artifact and should be treated as observed gap until metric alignment and action-token fallback audit are complete.",
+    "how_to_generate": "sbatch slurm_scripts/13_reproduce_table_s2.slurm"
+  }
+}

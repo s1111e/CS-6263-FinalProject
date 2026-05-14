@@ -1,0 +1,23 @@
+{
+  "log_path": "autovla-nuscenes-reproduction/evaluation_results/table_s2_constrained_action_600.log",
+  "samples_observed": 600,
+  "direct_text_samples": 0,
+  "direct_token_id_samples": 0,
+  "logits_fallback_samples": 0,
+  "constrained_autoregressive_fallback_samples": 600,
+  "no_action_samples_estimate": 0,
+  "direct_text_rate_pct": 0.0,
+  "direct_token_id_rate_pct": 0.0,
+  "logits_fallback_rate_pct": 0.0,
+  "constrained_autoregressive_fallback_rate_pct": 100.0,
+  "event_count_distributions": {
+    "text": {},
+    "token_ids": {
+      "0": 600
+    },
+    "logits_fallback": {},
+    "constrained_autoregressive_fallback": {
+      "10": 600
+    }
+  }
+}

@@ -1,0 +1,43 @@
+# Large data / model directories (download separately)
+data/
+runs/
+logs/
+
+# Pretrained model weights (download from HuggingFace)
+Qwen2.5-VL-*/
+
+# Checkpoint files (too large for git)
+*.ckpt
+*.pt
+*.pth
+*.safetensors
+checkpoints/
+
+# Large evaluation artifacts
+evaluation_results/qualitative_candidate_bank_*/
+evaluation_results/qualitative_candidate_bank_reasoning_try/
+evaluation_results/multimodal_repair_final/
+evaluation_results/multimodal_repair_v2/checkpoint_step0020.pt
+
+# Python cache
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Virtual environments
+venv/
+env/

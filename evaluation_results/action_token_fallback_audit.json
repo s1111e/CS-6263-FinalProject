@@ -1,0 +1,22 @@
+{
+  "log_path": "logs/12_evaluate.out",
+  "samples_observed": 5569,
+  "direct_text_samples": 0,
+  "direct_token_id_samples": 0,
+  "logits_fallback_samples": 5569,
+  "constrained_autoregressive_fallback_samples": 0,
+  "no_action_samples_estimate": 0,
+  "direct_text_rate_pct": 0.0,
+  "direct_token_id_rate_pct": 0.0,
+  "logits_fallback_rate_pct": 100.0,
+  "constrained_autoregressive_fallback_rate_pct": 0.0,
+  "event_count_distributions": {
+    "text": {},
+    "token_ids": {
+      "0": 5569
+    },
+    "logits_fallback": {
+      "10": 5569
+    }
+  }
+}

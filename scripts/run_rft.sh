@@ -1,0 +1,1 @@
+PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True CUDA_VISIBLE_DEVICES=0,1,2,3 python tools/run_rft.py --config training/qwen2.5-vl-3B-nuplan-grpo-cot

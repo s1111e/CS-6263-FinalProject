@@ -1,0 +1,16 @@
+{
+  "dtype": "float32",
+  "lr": 0.001,
+  "action_count": 10,
+  "loss_before": 9.655792236328125,
+  "restricted_before": 8.274410247802734,
+  "gate_before": 1.3813822269439697,
+  "loss_after_one_step": 5.991316795349121,
+  "restricted_after_one_step": 2.4568066596984863,
+  "gate_after_one_step": 3.5345101356506348,
+  "embedding_grad_norm": 0.9957819581031799,
+  "lm_head_grad_norm": 0.9957819581031799,
+  "embedding_delta_norm": 1.6598126888275146,
+  "lm_head_delta_norm": 1.6598126888275146,
+  "embedding_is_lm_head_same_object": true
+}

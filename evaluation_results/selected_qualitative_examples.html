@@ -1,0 +1,159 @@
+<div class="ok-note" style="margin-top: 16px;">Selected from 60 exported qualitative candidates: 4 slow/reasoning examples and 4 fast/direct examples. The slow examples show both useful short reasoning and one repeated-output failure case.</div>
+<h3>Selected Slow / Reasoning Examples</h3>
+<div class="qualitative-card-grid">
+  <article class="qualitative-card">
+    <img src="evaluation_results/qualitative_candidate_bank_reasoning_try/001_7af93e676b3b40318c085ae97773df12/front_strip.png" alt="Selected qualitative example front camera strip">
+    <h3>Clean slow reasoning: Go Straight</h3>
+    <p><strong>Why selected:</strong> Slow mode gives a short speed-based explanation.</p>
+    <p><strong>Token:</strong> <code>7af93e676b3b40318c085ae97773df12</code></p>
+    <p><strong>Source:</strong> <code>evaluation_results/qualitative_candidate_bank_reasoning_try/001_7af93e676b3b40318c085ae97773df12/outputs.json</code></p>
+    <div class="mode-grid">
+      <div>
+        <h4>Fast Thinking</h4>
+        <p><strong>Tokens:</strong> 10</p>
+        <p>keep going straight</p>
+      </div>
+      <div>
+        <h4>Slow Thinking</h4>
+        <p><strong>Tokens:</strong> 10</p>
+        <p>The ego vehicle&#x27;s speed is 7.338 m/s, which is greater than the minimum speed requirement of 5.5 m/s. Therefore, the ego vehicle should continue to drive straight ahead. So the driving action of this scenario is &quot;drive straight.&quot;</p>
+      </div>
+    </div>
+  </article>
+  <article class="qualitative-card">
+    <img src="evaluation_results/qualitative_candidate_bank_reasoning_try/006_1adbe193e7b84d4092a5a3f7607bbf3f/front_strip.png" alt="Selected qualitative example front camera strip">
+    <h3>Clean slow reasoning: Go Straight</h3>
+    <p><strong>Why selected:</strong> Slow mode explains why going straight is selected.</p>
+    <p><strong>Token:</strong> <code>1adbe193e7b84d4092a5a3f7607bbf3f</code></p>
+    <p><strong>Source:</strong> <code>evaluation_results/qualitative_candidate_bank_reasoning_try/006_1adbe193e7b84d4092a5a3f7607bbf3f/outputs.json</code></p>
+    <div class="mode-grid">
+      <div>
+        <h4>Fast Thinking</h4>
+        <p><strong>Tokens:</strong> 10</p>
+        <p>keep going straight</p>
+      </div>
+      <div>
+        <h4>Slow Thinking</h4>
+        <p><strong>Tokens:</strong> 10</p>
+        <p>The ego vehicle is going straight ahead. The ego vehicle should keep going straight ahead. So the vehicle&#x27;s action is keep going straight ahead.</p>
+      </div>
+    </div>
+  </article>
+  <article class="qualitative-card">
+    <img src="evaluation_results/qualitative_candidate_bank_reasoning_try/007_cace7b0c3e674df99f8699dcbec76937/front_strip.png" alt="Selected qualitative example front camera strip">
+    <h3>Clean slow reasoning: Go Straight</h3>
+    <p><strong>Why selected:</strong> Slow mode explicitly chooses drive_straight after a short reason.</p>
+    <p><strong>Token:</strong> <code>cace7b0c3e674df99f8699dcbec76937</code></p>
+    <p><strong>Source:</strong> <code>evaluation_results/qualitative_candidate_bank_reasoning_try/007_cace7b0c3e674df99f8699dcbec76937/outputs.json</code></p>
+    <div class="mode-grid">
+      <div>
+        <h4>Fast Thinking</h4>
+        <p><strong>Tokens:</strong> 10</p>
+        <p>keep going straight</p>
+      </div>
+      <div>
+        <h4>Slow Thinking</h4>
+        <p><strong>Tokens:</strong> 10</p>
+        <p>The ego vehicle needs to keep going straight ahead. So, I choose drive_straight as the output action.</p>
+      </div>
+    </div>
+  </article>
+  <article class="qualitative-card">
+    <img src="evaluation_results/qualitative_candidate_bank_reasoning_try/009_8cf7909610bb4c8bb97d8618e3b3e25f/front_strip.png" alt="Selected qualitative example front camera strip">
+    <h3>Slow failure case: Turn Left</h3>
+    <p><strong>Why selected:</strong> Slow mode enters a repetitive CoT-like loop; useful as a limitation example.</p>
+    <p><strong>Token:</strong> <code>8cf7909610bb4c8bb97d8618e3b3e25f</code></p>
+    <p><strong>Source:</strong> <code>evaluation_results/qualitative_candidate_bank_reasoning_try/009_8cf7909610bb4c8bb97d8618e3b3e25f/outputs.json</code></p>
+    <div class="mode-grid">
+      <div>
+        <h4>Fast Thinking</h4>
+        <p><strong>Tokens:</strong> 10</p>
+        <p>keep going straight</p>
+      </div>
+      <div>
+        <h4>Slow Thinking</h4>
+        <p><strong>Tokens:</strong> 10</p>
+        <p>The ego vehicle is going straight. The traffic light ahead is red. There is a barrier on the right side of the road. The road is wet. There is a barrier on the left side of the road. There is a barrier on the right side of the road. There is a barrier on the left side of the road. There is a barrier on the right side of the road. There is a barrier on the left side of the road. There is a barrier on the right side of the road. There is a barrier on the left side of the road. There is a barrier on the right side of the road. There is a barrier on the left side of the road. There is a barrier on the right side of t</p>
+      </div>
+    </div>
+  </article>
+</div>
+<h3>Selected Fast / Direct Examples</h3>
+<div class="qualitative-card-grid">
+  <article class="qualitative-card">
+    <img src="evaluation_results/qualitative_candidate_bank_50/010_dc75bab3f7164bfeb399c768fde0f620/front_strip.png" alt="Selected qualitative example front camera strip">
+    <h3>Fast direct action: Go Straight</h3>
+    <p><strong>Why selected:</strong> Fast mode directly outputs keep-going-straight on an easy case.</p>
+    <p><strong>Token:</strong> <code>dc75bab3f7164bfeb399c768fde0f620</code></p>
+    <p><strong>Source:</strong> <code>evaluation_results/qualitative_candidate_bank_50/010_dc75bab3f7164bfeb399c768fde0f620/outputs.json</code></p>
+    <div class="mode-grid">
+      <div>
+        <h4>Fast Thinking</h4>
+        <p><strong>Tokens:</strong> 10</p>
+        <p>keep going straight</p>
+      </div>
+      <div>
+        <h4>Slow Thinking</h4>
+        <p><strong>Tokens:</strong> 10</p>
+        <p>go_straight |-0.5,-0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.</p>
+      </div>
+    </div>
+  </article>
+  <article class="qualitative-card">
+    <img src="evaluation_results/qualitative_candidate_bank_50/012_c0da6ecb419640948d535f92c7c02bc5/front_strip.png" alt="Selected qualitative example front camera strip">
+    <h3>Fast direct action: Go Straight</h3>
+    <p><strong>Why selected:</strong> Fast mode gives a compact direct action without extra reasoning.</p>
+    <p><strong>Token:</strong> <code>c0da6ecb419640948d535f92c7c02bc5</code></p>
+    <p><strong>Source:</strong> <code>evaluation_results/qualitative_candidate_bank_50/012_c0da6ecb419640948d535f92c7c02bc5/outputs.json</code></p>
+    <div class="mode-grid">
+      <div>
+        <h4>Fast Thinking</h4>
+        <p><strong>Tokens:</strong> 10</p>
+        <p>keep going straight</p>
+      </div>
+      <div>
+        <h4>Slow Thinking</h4>
+        <p><strong>Tokens:</strong> 10</p>
+        <p>go_straight |-0.5,-0.5,0.5,0.5,go_straight|</p>
+      </div>
+    </div>
+  </article>
+  <article class="qualitative-card">
+    <img src="evaluation_results/qualitative_candidate_bank_50/013_51eebb8043b844fa91ab2a70361882fc/front_strip.png" alt="Selected qualitative example front camera strip">
+    <h3>Fast direct action: Go Straight</h3>
+    <p><strong>Why selected:</strong> Fast mode stays concise on a simple go-straight case.</p>
+    <p><strong>Token:</strong> <code>51eebb8043b844fa91ab2a70361882fc</code></p>
+    <p><strong>Source:</strong> <code>evaluation_results/qualitative_candidate_bank_50/013_51eebb8043b844fa91ab2a70361882fc/outputs.json</code></p>
+    <div class="mode-grid">
+      <div>
+        <h4>Fast Thinking</h4>
+        <p><strong>Tokens:</strong> 10</p>
+        <p>keep going straight</p>
+      </div>
+      <div>
+        <h4>Slow Thinking</h4>
+        <p><strong>Tokens:</strong> 10</p>
+        <p>go_straight |-1.0|-0.5|go_straight|</p>
+      </div>
+    </div>
+  </article>
+  <article class="qualitative-card">
+    <img src="evaluation_results/qualitative_candidate_bank_50/015_20622852ae754f25bb55b8fa466b5455/front_strip.png" alt="Selected qualitative example front camera strip">
+    <h3>Fast direct action: Go Straight</h3>
+    <p><strong>Why selected:</strong> Fast mode provides the expected direct action for a simple case.</p>
+    <p><strong>Token:</strong> <code>20622852ae754f25bb55b8fa466b5455</code></p>
+    <p><strong>Source:</strong> <code>evaluation_results/qualitative_candidate_bank_50/015_20622852ae754f25bb55b8fa466b5455/outputs.json</code></p>
+    <div class="mode-grid">
+      <div>
+        <h4>Fast Thinking</h4>
+        <p><strong>Tokens:</strong> 10</p>
+        <p>keep going straight</p>
+      </div>
+      <div>
+        <h4>Slow Thinking</h4>
+        <p><strong>Tokens:</strong> 10</p>
+        <p>drive_straight</p>
+      </div>
+    </div>
+  </article>
+</div>
