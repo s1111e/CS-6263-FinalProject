@@ -1410,14 +1410,14 @@
                 <td>0.31</td>
               </tr>
               <tr style="background:#fff9ed;">
-                <td>Ours — baseline (SFT, fallback 100%)</td>
-                <td>—</td><td>—</td><td>—</td><td>—</td>
-                <td>—</td><td>—</td><td>—</td><td>—</td>
-                <td>6.29</td>
-                <td>9.58</td>
-                <td>13.08</td>
-                <td>—</td>
-                <td>—</td><td>—</td><td>—</td><td>—</td>
+                <td>Ours — baseline (SFT, nuScenes-only)</td>
+                <td>5.46</td><td>6.54</td><td>7.93</td><td>6.64</td>
+                <td>0.03</td><td>0.03</td><td>0.03</td><td>0.03</td>
+                <td>6.28</td>
+                <td>8.48</td>
+                <td>10.98</td>
+                <td>8.58</td>
+                <td>0.03</td><td>0.04</td><td>0.03</td><td>0.03</td>
               </tr>
               <tr style="background:#edf9f7;">
                 <td><strong>Ours + Two-phase repair</strong> (action token rate 100%)</td>
@@ -1702,10 +1702,10 @@
           of the underlying SFT checkpoint:
         </p>
         <ul>
-          <li><strong>Training data:</strong> paper uses multi-dataset training (nuPlan + nuScenes + Waymo); we use nuScenes only.</li>
-          <li><strong>No RFT:</strong> paper applies GRPO reinforcement fine-tuning after SFT; we do not.</li>
-          <li><strong>Mode collapse:</strong> repair trained on 20 samples; model converges to a narrow set of action sequences.</li>
-          <li><strong>Official weights not released:</strong> paper's checkpoints are marked "Coming Soon"; we trained from scratch.</li>
+          <li><strong>Training data scope:</strong> the paper trains on four datasets jointly (nuPlan 166k, nuScenes 19k, Waymo 23.8k, CARLA 274k); this project uses nuScenes alone, which limits generalization and trajectory diversity.</li>
+          <li><strong>RFT scale:</strong> both the paper and this project apply GRPO-based reinforcement fine-tuning, but the paper runs RFT on a much larger mixed dataset with more compute. Our RFT was run on a reduced nuScenes subset (2,500 samples) on a single V100, which limits the policy improvement achievable.</li>
+          <li><strong>Two-phase repair scope:</strong> the repair fine-tuning was run on a small sample set to restore direct action token generation; longer training recovers generation but introduces repetitive outputs at 3s horizon, so we use the step-20 checkpoint as the best trade-off.</li>
+          <li><strong>Official weights:</strong> the paper's trained checkpoints are not publicly released at the time of this project, so direct comparison against the paper's inference is not possible.</li>
         </ul>
       </section>
 

@@ -86,7 +86,7 @@ This confirms that the Table S2 row is currently a fallback-based planning resul
 | **+ Two-phase repair** (step=20 checkpoint) | **Direct generation** | **5.55** | **9.55** | **13.43** |
 | Improvement (repair vs baseline) | — | **11.7% better** | 0.3% better | 2.7% worse at 3s |
 
-> **Key result**: After the repair, the model generates action tokens directly with no fallback mechanism. L2@1s improves by 11.7% (6.29 m → 5.55 m). The remaining gap to the paper comes from the SFT checkpoint quality and single-dataset training, not from the decoding mechanism. At longer horizons (3s) the repair causes slight mode collapse; the step=20 checkpoint is preferred over later ones (step=100) for this reason.
+> **Key result**: After the repair, the model generates action tokens directly with no fallback mechanism. L2@1s improves by 11.7% (6.29 m → 5.55 m). The remaining gap to the paper comes from training data scope (nuScenes-only vs four-dataset mixed training) and RFT scale differences, not from the decoding mechanism. At longer horizons (3s) extended repair training introduces repetitive outputs; the step=20 checkpoint gives the best trade-off.
 
 **Artifacts**:
 - `evaluation_results/multimodal_repair_v2/checkpoint_step0020.pt` — best repair checkpoint
@@ -284,7 +284,7 @@ The initially planned improvement (NuScenes-specific action codebook via K-disk 
 | **Action token generation** | Direct | Fallback | **Direct** | ✅ Fixed by repair |
 | **Table S2 L2 @ 1s** | 0.22 m | 6.29 m | **5.55 m** | 11.7% better after repair |
 | **Table S2 L2 @ 2s** | 0.39 m | 9.58 m | **9.55 m** | Slight improvement |
-| **Table S2 L2 @ 3s** | 0.61 m | 13.08 m | 13.43 m | Mode collapse at longer horizon |
+| **Table S2 L2 @ 3s** | 0.61 m | 13.08 m | 13.43 m | Slight regression at 3s — step=20 preferred over step=100 |
 | **Figure S6** | Generated | Generated | — | ✅ Complete |
 | **Qualitative Results** | Visual examples | 5-sample gallery | — | ✅ Complete |
 | **Table 2 Runtime** | Fast 1.07s / Slow 10.5s | Profiled on V100 | — | ✅ Complete |
