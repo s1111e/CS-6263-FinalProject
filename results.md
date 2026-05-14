@@ -79,14 +79,14 @@ This confirms that the Table S2 row is currently a fallback-based planning resul
 
 #### Planning Metric Results (200 validation samples)
 
-| Method | Action token rate | L2@1s | L2@2s | L2@3s |
-|---|---:|---:|---:|---:|
-| Paper (AutoVLA action-only) | 100% | **0.22** | **0.39** | **0.61** |
-| **Baseline** (our SFT, fallback 100%) | 0% | 6.29 | 9.58 | 13.08 |
-| **+ Two-phase repair** (step=20 checkpoint) | **100%** | **5.55** | **9.55** | **13.43** |
-| Δ improvement | +100pp | **−11.7%** | −0.3% | +2.7% |
+| Method | Action tokens | L2@1s | L2@2s | L2@3s |
+|---|:---:|---:|---:|---:|
+| Paper (AutoVLA action-only) | Direct generation | **0.22** | **0.39** | **0.61** |
+| **Baseline** (our SFT, logit fallback) | Fallback only | 6.29 | 9.58 | 13.08 |
+| **+ Two-phase repair** (step=20 checkpoint) | **Direct generation** | **5.55** | **9.55** | **13.43** |
+| Improvement (repair vs baseline) | — | **11.7% better** | 0.3% better | 2.7% worse at 3s |
 
-> **Key result**: The repair eliminates the fallback completely (0% → 100% direct action token generation) and improves L2@1s by 11.7%. The remaining gap to the paper is attributable to the SFT checkpoint quality, not to the decoding mechanism. The 2s and 3s values improve slightly less due to mode collapse at longer horizons; earlier checkpoints (step=20) are preferred over later ones (step=100) to avoid this.
+> **Key result**: After the repair, the model generates action tokens directly with no fallback mechanism. L2@1s improves by 11.7% (6.29 m → 5.55 m). The remaining gap to the paper comes from the SFT checkpoint quality and single-dataset training, not from the decoding mechanism. At longer horizons (3s) the repair causes slight mode collapse; the step=20 checkpoint is preferred over later ones (step=100) for this reason.
 
 **Artifacts**:
 - `evaluation_results/multimodal_repair_v2/checkpoint_step0020.pt` — best repair checkpoint
@@ -266,15 +266,14 @@ The initially planned improvement (NuScenes-specific action codebook via K-disk 
 
 **Status**: Generated static qualitative figures.
 
+> **Important**: All qualitative figures below were generated with the **baseline SFT checkpoint before the two-phase repair**. At this stage, the model does not generate action tokens directly — trajectories are produced via logit-based fallback. The repair results (direct action token generation) are evaluated separately in the planning metric tables above; qualitative examples with the repaired checkpoint are left for future work.
+
 - Main Figure S6-style example: `evaluation_results/figure_s6_qualitative_results.png`
 - Extended qualitative gallery PNG: `evaluation_results/qualitative_long_slow_gallery.png`
 - Selected presentation examples: `evaluation_results/selected_qualitative_examples.html`
 - Gallery sample count: 5 nuScenes validation examples
-- The final presentation page includes 8 selected examples: 4 Slow/Reasoning examples and 4 Fast/Direct examples.
-- The selected Slow/Reasoning set contains 3 short natural-language reasoning examples and 1 repetitive failure case.
-- The selected Fast/Direct set contains simple cases where Fast Thinking gives a compact direct action.
-- The broader gallery compares Fast Thinking (`use_cot=False`) and Slow Thinking (`use_cot=True`) side by side, selecting examples where Slow Thinking produced longer text than Fast Thinking.
-- V100-safe generation was used for the gallery: greedy decoding with `max_new_tokens=128`.
+- The gallery compares Fast Thinking (`use_cot=False`) and Slow Thinking (`use_cot=True`) side by side, selecting examples where Slow Thinking produced meaningfully longer output than Fast Thinking.
+- V100-safe generation: greedy decoding, `max_new_tokens=128`, float16.
 
 ---
 
@@ -282,8 +281,8 @@ The initially planned improvement (NuScenes-specific action codebook via K-disk 
 
 | Aspect | Paper | Baseline (ours) | + Repair (ours) | Status |
 |--------|---|---|---|---|
-| **Action token rate** | 100% | 0% | **100%** | ✅ Fixed by repair |
-| **Table S2 L2 @ 1s** | 0.22 m | 6.29 m | **5.55 m** | Gap reduced 11.7% |
+| **Action token generation** | Direct | Fallback | **Direct** | ✅ Fixed by repair |
+| **Table S2 L2 @ 1s** | 0.22 m | 6.29 m | **5.55 m** | 11.7% better after repair |
 | **Table S2 L2 @ 2s** | 0.39 m | 9.58 m | **9.55 m** | Slight improvement |
 | **Table S2 L2 @ 3s** | 0.61 m | 13.08 m | 13.43 m | Mode collapse at longer horizon |
 | **Figure S6** | Generated | Generated | — | ✅ Complete |

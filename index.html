@@ -589,19 +589,19 @@
             <span class="badge done">Done: SFT/RFT trials</span>
             <span class="badge done">Done: fallback-rate audit</span>
             <span class="badge done">Done: Two-phase repair (improvement)</span>
-            <span class="badge done">Done: Action token rate 0%→100%</span>
+            <span class="badge done">Done: Direct action token generation</span>
           </div>
         </div>
         <div class="metric-grid">
           <div class="metric">
-            <span>Action token rate</span>
-            <strong>0% → 100%</strong>
-            <p class="small muted">After two-phase repair</p>
+            <span>Action Tokens</span>
+            <strong>Generated directly</strong>
+            <p class="small muted">Two-phase repair — no fallback</p>
           </div>
           <div class="metric">
-            <span>L2@1s improvement</span>
-            <strong>−11.7%</strong>
-            <p class="small muted">6.29 m → 5.55 m</p>
+            <span>L2@1s (after repair)</span>
+            <strong>5.55 m</strong>
+            <p class="small muted">11.7% better than baseline</p>
           </div>
           <div class="metric">
             <span>Val samples</span>
@@ -1346,9 +1346,9 @@
               <tr style="background:#edf9f7;">
                 <td><strong>L2@1s (+ repair)</strong></td>
                 <td>0.22 m</td>
-                <td><strong>5.55 m</strong> (was 6.29 m)</td>
-                <td><span class="badge done">−11.7%</span></td>
-                <td>Direct action generation replaces fallback. Remaining gap due to SFT checkpoint quality.</td>
+                <td><strong>5.55 m</strong> (baseline: 6.29 m)</td>
+                <td><span class="badge done">11.7% better</span></td>
+                <td>Direct action token generation. Remaining gap due to SFT checkpoint quality and single-dataset training.</td>
               </tr>
               <tr>
                 <td>Codebook metrics</td>
@@ -1466,19 +1466,19 @@
                 <td>13.43 m</td>
               </tr>
               <tr>
-                <td>Δ (repair vs baseline)</td>
-                <td>+100 pp</td>
-                <td style="color:#15803d;font-weight:700;">−11.7%</td>
-                <td style="color:#15803d;font-weight:700;">−0.3%</td>
-                <td style="color:#b45309;">+2.7%</td>
+                <td>Improvement (repair vs baseline)</td>
+                <td>Direct generation</td>
+                <td style="color:#15803d;font-weight:700;">11.7% better</td>
+                <td style="color:#15803d;font-weight:700;">0.3% better</td>
+                <td style="color:#b45309;">2.7% worse at 3s</td>
               </tr>
             </tbody>
           </table>
         </div>
         <div class="ok-note" style="margin-top:14px;">
-          <strong>Key result:</strong> The repair eliminates the fallback mechanism entirely
-          (0% → 100% direct action token generation) and improves L2@1s by 11.7%.
-          The step=20 checkpoint is preferred over later checkpoints (step=100) to avoid
+          <strong>Key result:</strong> After the repair, the model generates action tokens directly
+          with no fallback, and L2@1s improves by 11.7% (6.29 m → 5.55 m).
+          The step=20 checkpoint is preferred over later ones (step=100) to avoid
           mode collapse at longer planning horizons.
         </div>
 
@@ -1567,6 +1567,11 @@
           <div class="figure-caption">
             Figure S6-style output from <code>reproduce_figure_s6_qualitative.py</code> (seed=7).
             Shows front-camera views, predicted trajectory, and model reasoning text.
+            <br>
+            <strong>Note:</strong> These figures were generated with the <em>baseline SFT checkpoint before the repair</em>.
+            At this stage the model does not emit action tokens directly — trajectories are computed
+            via logit-based fallback. The repair (two-phase fine-tuning) is applied separately; see
+            the Improvement section for results with direct action token generation.
           </div>
         </div>
 
@@ -1582,14 +1587,25 @@
             <code>evaluation_results/qualitative_long_slow_gallery.png</code> — 5 validation
             scenes, fast thinking (left column) vs slow thinking (right column). Generated with
             <code>max_new_tokens=128</code>, greedy decoding, V100 float16.
+            <br>
+            <strong>Note:</strong> Generated with the baseline checkpoint (before repair).
+            Trajectories are decoded from logit fallback, not direct action token generation.
           </div>
         </div>
 
         <h3 style="margin-top:24px;">Selected Output Examples</h3>
         <p>
-          The following examples are text outputs from the model on nuScenes validation scenes,
-          shown verbatim. Camera strips are local-only artifacts and are not included in the repository.
+          The following examples are selected nuScenes validation scenes with verbatim model outputs.
+          The gallery image shows the corresponding front-camera view alongside the predicted trajectory.
         </p>
+        <div class="figure-card" style="margin-top:8px; margin-bottom:16px;">
+          <img src="evaluation_results/qualitative_long_slow_gallery.png" alt="Selected output examples — fast vs slow thinking">
+          <div class="figure-caption">
+            Corresponding front-camera views and trajectory visualizations for the examples below.
+            Left column: fast thinking (direct action). Right column: slow thinking (with CoT).
+            Generated with the baseline checkpoint — trajectories via logit fallback.
+          </div>
+        </div>
         <div class="qualitative-card-grid">
           <article class="qualitative-card" style="padding:14px;">
             <h3>Slow thinking — speed-based reasoning</h3>
@@ -1702,7 +1718,7 @@
           <div>
             <h3>Fix Verified</h3>
             <ul>
-              <li>Two-phase action-token repair eliminates fallback: 0% → 100% direct generation.</li>
+              <li>Two-phase action-token repair: model now generates action tokens directly, no fallback needed.</li>
               <li>L2@1s improves 11.7% (6.29 → 5.55 m) on 200 validation samples.</li>
               <li>Remaining gap to paper (0.22 m) is from checkpoint quality, not decoding.</li>
             </ul>
