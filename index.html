@@ -493,6 +493,102 @@
       font-size: 13px;
     }
 
+    /* ── Paper-style Figure S6 cards ── */
+    .paper-figure {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .paper-panel {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: var(--radius);
+      overflow: hidden;
+      color: #e6edf3;
+    }
+
+    .paper-panel-img {
+      position: relative;
+    }
+
+    .paper-panel-img img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .traj-legend {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      padding: 5px 9px;
+      background: rgba(13, 17, 23, 0.80);
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .traj-legend-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #e6edf3;
+    }
+
+    .dot-gt   { width: 10px; height: 10px; border-radius: 50%; background: #22c55e; flex-shrink: 0; }
+    .dot-plan { width: 10px; height: 10px; border-radius: 50%; background: #ef4444; flex-shrink: 0; }
+
+    .paper-panel-body {
+      padding: 14px;
+      border-top: 1px solid #21262d;
+    }
+
+    .paper-instruction {
+      font-size: 11px;
+      color: #6e7681;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+    }
+
+    .paper-mode-label {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 800;
+      color: #8b949e;
+      margin-bottom: 10px;
+    }
+
+    .paper-output {
+      font-size: 12.5px;
+      line-height: 1.6;
+    }
+
+    .paper-output .t-tag   { color: #6e7681; font-style: italic; }
+    .paper-output .t-body  { color: #c9d1d9; font-style: italic; }
+    .paper-output .t-bold  { color: #e6edf3; font-weight: 700; font-style: normal; }
+    .paper-output .a-label { display: block; margin-top: 8px; color: #8b949e; }
+    .paper-output .a-tokens {
+      display: block;
+      margin-top: 3px;
+      color: #3fb950;
+      font-family: ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
+      font-size: 11.5px;
+      word-break: break-all;
+    }
+
+    @media (max-width: 700px) {
+      .paper-figure { grid-template-columns: 1fr; }
+    }
+    /* ── end paper cards ── */
+
     @media (max-width: 980px) {
       .layout {
         grid-template-columns: 1fr;
@@ -941,6 +1037,28 @@
         </div>
 
         <h3 style="margin-top: 22px;">Key Method Components</h3>
+
+        <!-- Figure S1 from the paper -->
+        <div class="figure-card" style="margin-bottom:18px;">
+          <img
+            src="https://arxiv.org/html/2506.13757v3/x7.png"
+            alt="Figure S1: Action codebook visualization — WOMD (real-world) and CARLA (simulation)"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+          >
+          <div style="display:none; padding:18px; background:#f8fafc; color:#475569; text-align:center; font-size:13px;">
+            Figure S1 — image could not be loaded from arXiv.
+            View at: <a href="https://arxiv.org/html/2506.13757v3" target="_blank">arxiv.org/html/2506.13757v3</a>
+          </div>
+          <div class="figure-caption">
+            <strong>Figure S1 (from paper):</strong> Visualization of action codebooks from
+            (a) real-world dataset (WOMD) and (b) simulation dataset (CARLA). Grey arrows
+            represent all 2048 tokens (position and heading); 300 tokens randomly highlighted
+            in blue for clarity. Each token encodes a short vehicle motion segment (Δx, Δy, Δθ)
+            at 0.5-second intervals. Notice that the WOMD codebook captures diverse urban motions
+            (turns, lane changes, stops) while CARLA shows smoother, more structured patterns.
+          </div>
+        </div>
+
         <div class="grid four">
           <div class="method-card">
             <h4>1. Action Tokenization</h4>
@@ -1593,88 +1711,299 @@
           </div>
         </div>
 
-        <h3 style="margin-top:24px;">Selected Output Examples</h3>
+        <h3 style="margin-top:24px;">Selected Output Examples — Paper Figure S6 Style</h3>
         <p>
-          The following examples are selected nuScenes validation scenes with verbatim model outputs.
-          The gallery image shows the corresponding front-camera view alongside the predicted trajectory.
+          Four nuScenes validation scenes shown in the same style as Figure S6 of the paper.
+          Top row: Fast Thinking (direct action, no CoT). Bottom row: Slow Thinking (Chain-of-Thought before action).
+          Action tokens are shown in <code>&lt;action_N&gt;</code> format decoded from the K=2048 codebook.
+          Generated with the baseline checkpoint (trajectories via logit fallback — repair results are in the Improvement section).
         </p>
-        <div class="figure-card" style="margin-top:8px; margin-bottom:16px;">
-          <img src="evaluation_results/qualitative_long_slow_gallery.png" alt="Selected output examples — fast vs slow thinking">
-          <div class="figure-caption">
-            Corresponding front-camera views and trajectory visualizations for the examples below.
-            Left column: fast thinking (direct action). Right column: slow thinking (with CoT).
-            Generated with the baseline checkpoint — trajectories via logit fallback.
+
+        <div class="paper-figure">
+
+          <!-- ── Fast 010 ── -->
+          <div class="paper-panel">
+            <div class="paper-panel-img">
+              <img src="evaluation_results/qualitative_images/fast_010_go_straight.png" alt="Fast thinking — scene 010">
+              <div class="traj-legend">
+                <div class="traj-legend-row"><span class="dot-gt"></span>Ground Truth</div>
+                <div class="traj-legend-row"><span class="dot-plan"></span>Planning</div>
+              </div>
+            </div>
+            <div class="paper-panel-body">
+              <div class="paper-instruction">Instruction: Go Straight</div>
+              <div class="paper-mode-label">🐇 Fast Thinking</div>
+              <div class="paper-output">
+                <span class="t-tag">&lt;think&gt;</span>
+                <span class="t-body"> This is a straightforward scenario, and a direct decision can be made. </span>
+                <span class="t-tag">&lt;/think&gt;</span>
+                <span class="a-label">&lt;answer&gt; The final output action is:</span>
+                <span class="a-tokens">&lt;action_499&gt;&lt;action_512&gt;&lt;action_57&gt;&lt;action_755&gt;&lt;action_0&gt;&lt;action_126&gt;&lt;action_0&gt;&lt;action_0&gt;&lt;action_0&gt;&lt;action_0&gt;</span>
+                <span class="a-label">&lt;/answer&gt;</span>
+              </div>
+            </div>
           </div>
+
+          <!-- ── Fast 015 ── -->
+          <div class="paper-panel">
+            <div class="paper-panel-img">
+              <img src="evaluation_results/qualitative_images/fast_015_go_straight.png" alt="Fast thinking — scene 015">
+              <div class="traj-legend">
+                <div class="traj-legend-row"><span class="dot-gt"></span>Ground Truth</div>
+                <div class="traj-legend-row"><span class="dot-plan"></span>Planning</div>
+              </div>
+            </div>
+            <div class="paper-panel-body">
+              <div class="paper-instruction">Instruction: Go Straight</div>
+              <div class="paper-mode-label">🐇 Fast Thinking</div>
+              <div class="paper-output">
+                <span class="t-tag">&lt;think&gt;</span>
+                <span class="t-body"> This is a straightforward scenario, and a direct decision can be made. </span>
+                <span class="t-tag">&lt;/think&gt;</span>
+                <span class="a-label">&lt;answer&gt; The final output action is:</span>
+                <span class="a-tokens">&lt;action_1370&gt;&lt;action_242&gt;&lt;action_5&gt;&lt;action_120&gt;&lt;action_408&gt;&lt;action_13&gt;&lt;action_201&gt;&lt;action_422&gt;&lt;action_595&gt;&lt;action_184&gt;</span>
+                <span class="a-label">&lt;/answer&gt;</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Slow 001 ── -->
+          <div class="paper-panel">
+            <div class="paper-panel-img">
+              <img src="evaluation_results/qualitative_images/slow_001_go_straight_speed.png" alt="Slow thinking — scene 001">
+              <div class="traj-legend">
+                <div class="traj-legend-row"><span class="dot-gt"></span>Ground Truth</div>
+                <div class="traj-legend-row"><span class="dot-plan"></span>Planning</div>
+              </div>
+            </div>
+            <div class="paper-panel-body">
+              <div class="paper-instruction">Instruction: Go Straight</div>
+              <div class="paper-mode-label">🐢 Slow Thinking</div>
+              <div class="paper-output">
+                <span class="t-tag">&lt;think&gt;</span>
+                <span class="t-body">
+                  <span class="t-bold">Scene Description:</span>
+                  Urban road, clear lane ahead, ego speed 7.338 m/s.<br>
+                  <span class="t-bold">Reasoning on Intent:</span>
+                  The ego vehicle's speed is 7.338 m/s, which is greater than the minimum speed requirement of 5.5 m/s. Therefore, the ego vehicle should continue to drive straight ahead.<br>
+                  <span class="t-bold">Best Driving Action:</span>
+                  Drive straight.
+                </span>
+                <span class="t-tag">&lt;/think&gt;</span>
+                <span class="a-label">&lt;answer&gt; The final output action is:</span>
+                <span class="a-tokens">&lt;action_757&gt;&lt;action_530&gt;&lt;action_885&gt;&lt;action_885&gt;&lt;action_657&gt;&lt;action_182&gt;&lt;action_182&gt;&lt;action_43&gt;&lt;action_731&gt;&lt;action_5&gt;</span>
+                <span class="a-label">&lt;/answer&gt;</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Slow 009 ── -->
+          <div class="paper-panel">
+            <div class="paper-panel-img">
+              <img src="evaluation_results/qualitative_images/slow_009_turn_left_repetition.png" alt="Slow thinking — scene 009">
+              <div class="traj-legend">
+                <div class="traj-legend-row"><span class="dot-gt"></span>Ground Truth</div>
+                <div class="traj-legend-row"><span class="dot-plan"></span>Planning</div>
+              </div>
+            </div>
+            <div class="paper-panel-body">
+              <div class="paper-instruction">Instruction: Turn Left</div>
+              <div class="paper-mode-label">🐢 Slow Thinking</div>
+              <div class="paper-output">
+                <span class="t-tag">&lt;think&gt;</span>
+                <span class="t-body">
+                  <span class="t-bold">Scene Description:</span>
+                  Intersection, red traffic light ahead, wet road surface.<br>
+                  <span class="t-bold">Critical Object Description:</span>
+                  There is a barrier on the right side of the road.<br>
+                  <span class="t-bold">Reasoning on Intent:</span>
+                  The ego vehicle is going straight. The traffic light ahead is red. There is a barrier on the right side of the road… <em style="color:#6e7681;">[model enters repetitive loop — known failure mode]</em>
+                </span>
+                <span class="t-tag">&lt;/think&gt;</span>
+                <span class="a-label">&lt;answer&gt; The final output action is:</span>
+                <span class="a-tokens">&lt;action_441&gt;&lt;action_626&gt;&lt;action_105&gt;&lt;action_1208&gt;&lt;action_1383&gt;&lt;action_1981&gt;&lt;action_1301&gt;&lt;action_681&gt;&lt;action_375&gt;&lt;action_616&gt;</span>
+                <span class="a-label">&lt;/answer&gt;</span>
+              </div>
+            </div>
+          </div>
+
         </div>
+        <p class="small muted" style="margin-top:10px;">
+          Note: camera images show multi-frame front-view strips without trajectory overlay. Full BEV trajectory visualization is in <code>evaluation_results/figure_s6_qualitative_results.png</code>.
+        </p>
+
+        <h4 style="margin-top:24px; color:var(--muted); text-transform:uppercase; font-size:12px; letter-spacing:.06em;">All Eight Selected Scenes</h4>
         <div class="qualitative-card-grid">
-          <article class="qualitative-card" style="padding:14px;">
-            <h3>Slow thinking — speed-based reasoning</h3>
-            <p class="small muted">Scene: urban road, clear lane ahead, ego at ~7.3 m/s</p>
-            <div class="mode-grid">
-              <div>
-                <h4>Fast (direct)</h4>
-                <p><em>"keep going straight"</em></p>
+
+          <article class="qualitative-card">
+            <img src="evaluation_results/qualitative_images/slow_001_go_straight_speed.png" alt="Scene 001 front camera strip">
+            <div style="padding:14px;">
+              <h3 style="margin:0 0 4px;">Go Straight — speed-based reasoning</h3>
+              <p class="small muted" style="margin:0 0 10px;">Instruction: Go Straight &nbsp;·&nbsp; Token: 7af93e67…</p>
+              <div class="mode-grid">
+                <div>
+                  <h4>Fast output</h4>
+                  <p><em>"keep going straight"</em></p>
+                  <p class="small muted">Action tokens: <code>152422, 152195, 152550, 152550, 152322, 151847, 151847, 151708, 152396, 151670</code></p>
+                </div>
+                <div>
+                  <h4>Slow output (CoT)</h4>
+                  <p><em>"The ego vehicle's speed is 7.338 m/s, which is greater than the minimum speed requirement of 5.5 m/s. Therefore, the ego vehicle should continue to drive straight ahead. So the driving action of this scenario is 'drive straight.'"</em></p>
+                  <p class="small muted">Action tokens: <code>152422, 152195, 152550, 152550, 152322, 151847, 151847, 151708, 152396, 151670</code></p>
+                </div>
               </div>
-              <div>
-                <h4>Slow (with CoT)</h4>
-                <p><em>"The ego vehicle's speed is 7.338 m/s, which is greater than the minimum speed requirement of 5.5 m/s. Therefore, the ego vehicle should continue to drive straight ahead. So the driving action of this scenario is 'drive straight.'"</em></p>
+              <p class="small muted" style="margin-top:8px;">Both modes select the same action tokens. Slow mode adds useful context — it checks ego speed against a threshold before committing.</p>
+            </div>
+          </article>
+
+          <article class="qualitative-card">
+            <img src="evaluation_results/qualitative_images/slow_006_go_straight_simple.png" alt="Scene 006 front camera strip">
+            <div style="padding:14px;">
+              <h3 style="margin:0 0 4px;">Go Straight — simple lane reasoning</h3>
+              <p class="small muted" style="margin:0 0 10px;">Instruction: Go Straight &nbsp;·&nbsp; Token: 1adbe193…</p>
+              <div class="mode-grid">
+                <div>
+                  <h4>Fast output</h4>
+                  <p><em>"keep going straight"</em></p>
+                  <p class="small muted">Action tokens: <code>151778, 152391, 152354, 151795, 151975, …</code></p>
+                </div>
+                <div>
+                  <h4>Slow output (CoT)</h4>
+                  <p><em>"The ego vehicle is going straight ahead. The ego vehicle should keep going straight ahead. So the vehicle's action is keep going straight ahead."</em></p>
+                  <p class="small muted">Action tokens: <code>151778, 152391, 152354, 151795, 151975, …</code></p>
+                </div>
+              </div>
+              <p class="small muted" style="margin-top:8px;">Slow thinking repeats the observation without adding new information. An RFT-trained model would skip this and use fast mode.</p>
+            </div>
+          </article>
+
+          <article class="qualitative-card">
+            <img src="evaluation_results/qualitative_images/slow_007_go_straight_minimal.png" alt="Scene 007 front camera strip">
+            <div style="padding:14px;">
+              <h3 style="margin:0 0 4px;">Go Straight — minimal reasoning</h3>
+              <p class="small muted" style="margin:0 0 10px;">Instruction: Go Straight &nbsp;·&nbsp; Token: cace7b0c…</p>
+              <div class="mode-grid">
+                <div>
+                  <h4>Fast output</h4>
+                  <p><em>"keep going straight"</em></p>
+                  <p class="small muted">Action tokens: <code>152166, 151668, 152167, 153653, 152712, …</code></p>
+                </div>
+                <div>
+                  <h4>Slow output (CoT)</h4>
+                  <p><em>"The ego vehicle needs to keep going straight ahead. So, I choose drive_straight as the output action."</em></p>
+                  <p class="small muted">Action tokens: <code>152166, 151668, 152167, 153653, 152712, …</code></p>
+                </div>
+              </div>
+              <p class="small muted" style="margin-top:8px;">One-sentence reasoning — the model is close to skipping CoT but still goes through the slow path. Fast mode is clearly sufficient here.</p>
+            </div>
+          </article>
+
+          <article class="qualitative-card">
+            <img src="evaluation_results/qualitative_images/slow_009_turn_left_repetition.png" alt="Scene 009 front camera strip">
+            <div style="padding:14px;">
+              <h3 style="margin:0 0 4px;">Turn Left — repetition failure</h3>
+              <p class="small muted" style="margin:0 0 10px;">Instruction: Turn Left &nbsp;·&nbsp; Token: 8cf7909…</p>
+              <div class="mode-grid">
+                <div>
+                  <h4>Fast output</h4>
+                  <p><em>"keep going straight"</em></p>
+                  <p class="small muted">Action tokens: <code>152106, 152291, 151770, 152873, 153048, …</code></p>
+                </div>
+                <div>
+                  <h4>Slow output (CoT)</h4>
+                  <p><em>"The ego vehicle is going straight. The traffic light ahead is red. There is a barrier on the right side of the road. There is a barrier on the left side of the road. There is a barrier on the right…"</em> [repeats]</p>
+                  <p class="small muted">Action tokens: <code>152106, 152291, 151770, 152873, 153048, …</code></p>
+                </div>
+              </div>
+              <p class="small muted" style="margin-top:8px;">Classic repetition failure — the model loops on the same observation. Slow mode fails here while fast mode at least produces a concise output. Both ignore the "Turn Left" instruction.</p>
+            </div>
+          </article>
+
+        </div>
+
+        <h4 style="margin-top:24px; color:var(--muted); text-transform:uppercase; font-size:12px; letter-spacing:.06em;">Fast Thinking Examples</h4>
+        <div class="qualitative-card-grid">
+
+          <article class="qualitative-card">
+            <img src="evaluation_results/qualitative_images/fast_010_go_straight.png" alt="Scene 010 front camera strip">
+            <div style="padding:14px;">
+              <h3 style="margin:0 0 4px;">Go Straight — clear road</h3>
+              <p class="small muted" style="margin:0 0 10px;">Instruction: Go Straight &nbsp;·&nbsp; Token: dc75bab3…</p>
+              <div class="mode-grid">
+                <div>
+                  <h4>Fast output</h4>
+                  <p><em>"keep going straight"</em></p>
+                  <p class="small muted">Action tokens: <code>152164, 152177, 151722, 152420, 151665, …</code></p>
+                </div>
+                <div>
+                  <h4>Slow output (CoT)</h4>
+                  <p><em>"go_straight |-0.5,-0.5,0.5,0.5,0.5,0.5,…"</em></p>
+                  <p class="small muted">Slow mode produces a malformed output — raw trajectory values instead of reasoning. Fast mode is more reliable here.</p>
+                </div>
               </div>
             </div>
-            <p class="small muted" style="margin-top:8px;">
-              This is a case where slow thinking adds real context — the model checks speed against a threshold before committing to an action.
-            </p>
           </article>
-          <article class="qualitative-card" style="padding:14px;">
-            <h3>Slow thinking — minimal reasoning</h3>
-            <p class="small muted">Scene: straight road, no obstacles</p>
-            <div class="mode-grid">
-              <div>
-                <h4>Fast (direct)</h4>
-                <p><em>"keep going straight"</em></p>
-              </div>
-              <div>
-                <h4>Slow (with CoT)</h4>
-                <p><em>"The ego vehicle needs to keep going straight ahead. So, I choose drive_straight as the output action."</em></p>
+
+          <article class="qualitative-card">
+            <img src="evaluation_results/qualitative_images/fast_012_go_straight.png" alt="Scene 012 front camera strip">
+            <div style="padding:14px;">
+              <h3 style="margin:0 0 4px;">Go Straight — compact direct action</h3>
+              <p class="small muted" style="margin:0 0 10px;">Instruction: Go Straight &nbsp;·&nbsp; Token: c0da6ecb…</p>
+              <div class="mode-grid">
+                <div>
+                  <h4>Fast output</h4>
+                  <p><em>"keep going straight"</em></p>
+                  <p class="small muted">Action tokens: <code>152164, 152177, 151722, 152420, 151665, …</code></p>
+                </div>
+                <div>
+                  <h4>Slow output (CoT)</h4>
+                  <p><em>"go_straight |-0.5,-0.5,0.5,0.5,go_straight|"</em></p>
+                  <p class="small muted">Again a malformed slow output. Fast thinking is clearly the appropriate mode for this simple case.</p>
+                </div>
               </div>
             </div>
-            <p class="small muted" style="margin-top:8px;">
-              Here slow thinking doesn't add anything useful — it repeats what fast thinking already concluded in one token. This is the kind of unnecessary reasoning that RFT is supposed to eliminate.
-            </p>
           </article>
-          <article class="qualitative-card" style="padding:14px;">
-            <h3>Slow thinking — repetition failure</h3>
-            <p class="small muted">Scene: intersection, red light visible</p>
-            <div class="mode-grid">
-              <div>
-                <h4>Fast (direct)</h4>
-                <p><em>"keep going straight"</em></p>
-              </div>
-              <div>
-                <h4>Slow (with CoT)</h4>
-                <p><em>"The traffic light ahead is red. There is a barrier on the right side of the road. There is a barrier on the left side of the road. There is a barrier on the right side of the road. There is a barrier on the left side..."</em> [repeats for remaining tokens]</p>
+
+          <article class="qualitative-card">
+            <img src="evaluation_results/qualitative_images/fast_013_go_straight.png" alt="Scene 013 front camera strip">
+            <div style="padding:14px;">
+              <h3 style="margin:0 0 4px;">Go Straight — concise fast action</h3>
+              <p class="small muted" style="margin:0 0 10px;">Instruction: Go Straight &nbsp;·&nbsp; Token: 51eebb80…</p>
+              <div class="mode-grid">
+                <div>
+                  <h4>Fast output</h4>
+                  <p><em>"keep going straight"</em></p>
+                  <p class="small muted">Action tokens: <code>152166, 151668, 152167, 153653, 152712, …</code></p>
+                </div>
+                <div>
+                  <h4>Slow output (CoT)</h4>
+                  <p><em>"go_straight |-1.0|-0.5|go_straight|"</em></p>
+                  <p class="small muted">Slow mode again outputs a partial trajectory string. Fast mode is reliable and concise.</p>
+                </div>
               </div>
             </div>
-            <p class="small muted" style="margin-top:8px;">
-              The model gets stuck in a loop. This is a known failure mode for autoregressive models when the training distribution doesn't cover the exact situation well. Also interesting: fast thinking still outputs the correct "go straight" even though the red light is present — it's not actually stopping.
-            </p>
           </article>
-          <article class="qualitative-card" style="padding:14px;">
-            <h3>Fast thinking — direct action (normal case)</h3>
-            <p class="small muted">Scene: simple straight segment, no agents nearby</p>
-            <div class="mode-grid">
-              <div>
-                <h4>Fast (direct)</h4>
-                <p><em>"keep going straight"</em></p>
-              </div>
-              <div>
-                <h4>Slow (with CoT)</h4>
-                <p><em>"drive_straight"</em></p>
+
+          <article class="qualitative-card">
+            <img src="evaluation_results/qualitative_images/fast_015_go_straight.png" alt="Scene 015 front camera strip">
+            <div style="padding:14px;">
+              <h3 style="margin:0 0 4px;">Go Straight — adaptive fast mode</h3>
+              <p class="small muted" style="margin:0 0 10px;">Instruction: Go Straight &nbsp;·&nbsp; Token: 20622852…</p>
+              <div class="mode-grid">
+                <div>
+                  <h4>Fast output</h4>
+                  <p><em>"keep going straight"</em></p>
+                  <p class="small muted">Action tokens: <code>153035, 151907, 151670, 151785, 152073, …</code></p>
+                </div>
+                <div>
+                  <h4>Slow output (CoT)</h4>
+                  <p><em>"drive_straight"</em></p>
+                  <p class="small muted">Slow output is actually shorter than fast output here — the model skips reasoning entirely. This is the adaptive behavior the paper aims to learn via RFT.</p>
+                </div>
               </div>
             </div>
-            <p class="small muted" style="margin-top:8px;">
-              Both modes agree here. The slow output is actually shorter than fast — which shows the model can sometimes skip reasoning even in slow mode. This is the intended adaptive behavior from the paper.
-            </p>
           </article>
+
         </div>
       </section>
 
